@@ -16,15 +16,19 @@ body{
 #avatar{
     width: 130px;
     height: 130px;
-    margin:50px 60px;
+    position: relative;
+    left: 50px;
+    top:50px;
+    margin-right: 20px;
 }
 #name{
     width: 130px;
     height: 130px;
     font-size: 40px;
     color: white;
-    margin-left:65px;
-    margin-top:-30px ;
+    position: relative;
+    left: 60px;
+    top:65px;
     letter-spacing: 20px; /* 將字元間的間距設置為 2 像素 */
 }
 
@@ -32,26 +36,42 @@ body{
     width: 30px;
     height: 30px;
     position: relative;
-    top:-250px;
-    left:250px;
-    margin: 10px
-    
-    
+    top:-200px;
+    left:270px;
+    margin: 10px;
+    transition: color 10s; /* 0.5秒的漸變時間 */
 }
 
 #second{
     width: 30px;
     height: 30px;
     position: relative;
-    top:-250px;
-    left:250px;
+    top:-200px;
+    left:270px;
     margin: 10px ;
 }
 
+#third{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top:-200px;
+    left:270px;
+    margin: 10px ;
+}
+
+#hoverArea {
+    transition: stroke 0.3s; /* 定義 stroke 屬性的過渡效果 */
+}
+
 #first:hover #hoverArea {
-    stroke: #ffffff;
+    stroke: #5662f6;
 }
 
 #second:hover #hoverArea{
-    stroke: #5662f6;
+    stroke: #dedede;
+}
+
+#third:hover #hoverArea{
+    stroke: #ffa984;
 }
