@@ -1,0 +1,40 @@
+body{
+    background-color: #101010;
+}
+.box{
+    width: 500px;
+    height: 280px;
+    flex-shrink: 0;
+    border-radius: 10px; /*原角*/
+    background: #272727;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left:-250px;
+    margin-top:-140px;
+}
+#avatar{
+    width: 130px;
+    height: 130px;
+    margin:50px 60px;
+}
+#name{
+    width: 130px;
+    height: 130px;
+    font-size: 40px;
+    color: white;
+    margin-left:65px;
+    margin-top:-30px ;
+    letter-spacing: 20px; /* 將字元間的間距設置為 2 像素 */
+}
+
+#first{
+    width: 30px;
+    height: 30px;
+    margin:-250px -250px 500px 250px; /* 上右下左 */
+    
+}
+
+#first:hover #hoverArea {
+    stroke: #5662f6;
+}
