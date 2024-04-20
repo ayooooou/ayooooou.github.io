@@ -31,10 +31,27 @@ body{
 #first{
     width: 30px;
     height: 30px;
-    margin:-250px -250px 500px 250px; /* 上右下左 */
+    position: relative;
+    top:-250px;
+    left:250px;
+    margin: 10px
+    
     
 }
 
+#second{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top:-250px;
+    left:250px;
+    margin: 10px ;
+}
+
 #first:hover #hoverArea {
+    stroke: #5662f6;
+}
+
+#second:hover #hoverArea{
     stroke: #5662f6;
 }
