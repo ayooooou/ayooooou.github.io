@@ -1,6 +1,11 @@
+a{
+    text-decoration: none; /*去掉連結底線*/
+}
+
 body{
     background-color: #101010;
 }
+
 .box{
     width: 500px;
     height: 280px;
@@ -16,62 +21,59 @@ body{
 #avatar{
     width: 130px;
     height: 130px;
-    position: relative;
+    position: absolute;
     left: 50px;
     top:50px;
-    margin-right: 20px;
 }
 #name{
-    width: 130px;
-    height: 130px;
     font-size: 40px;
     color: white;
-    position: relative;
-    left: 60px;
-    top:65px;
-    letter-spacing: 20px; /* 將字元間的間距設置為 2 像素 */
+    position: absolute;
+    left: 50px;
+    top:200px;
+    letter-spacing: 25px; /* 將字元間的間距設置為 2 像素 */
 }
 
-#first{
+
+#discord_icon,#github_icon,#instergram_icon{
     width: 30px;
     height: 30px;
-    position: relative;
-    top:-200px;
-    left:270px;
-    margin: 10px;
-    transition: color 10s; /* 0.5秒的漸變時間 */
 }
 
-#second{
-    width: 30px;
-    height: 30px;
-    position: relative;
-    top:-200px;
+#discord_link{
+    position:  absolute;
+    top:100px;
     left:270px;
-    margin: 10px ;
+    display: inline-block;
 }
 
-#third{
-    width: 30px;
-    height: 30px;
-    position: relative;
-    top:-200px;
-    left:270px;
-    margin: 10px ;
+#github_link{
+    position: absolute;
+    top:100px;
+    left:330px;
+    display: inline-block;
+
+}
+
+#instergram_link{
+    position: absolute;
+    top:100px;
+    left:390px;
+    display: inline-block;
 }
 
 #hoverArea {
-    transition: stroke 0.3s; /* 定義 stroke 屬性的過渡效果 */
+    transition: stroke 0.3s; /* 0.3s的漸變時間 */
 }
 
-#first:hover #hoverArea {
+#discord_icon:hover #hoverArea {
     stroke: #5662f6;
 }
 
-#second:hover #hoverArea{
+#github_icon:hover #hoverArea{
     stroke: #dedede;
 }
 
-#third:hover #hoverArea{
+#instergram_icon:hover #hoverArea{
     stroke: #ffa984;
 }
