@@ -35,7 +35,7 @@ const posts = [
 export function MainFeed() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
-      <main className="w-full max-w-[450px] border border-border rounded-2xl overflow-hidden bg-[#181818]">
+      <main className="w-full max-w-[500px] border border-border rounded-2xl overflow-hidden bg-[#181818]">
         <div>
           {posts.map((post) => (
             <PostCard key={post.id} post={post} />
