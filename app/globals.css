@@ -121,10 +121,14 @@
   }
   html {
     font-size: 12px;
+    overflow: hidden;
+    touch-action: none;
   }
   body {
     @apply bg-background text-foreground;
     line-height: 1.6;
+    overflow: hidden;
+    touch-action: none;
   }
 }
 
