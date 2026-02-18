@@ -44,6 +44,11 @@ jobs:
       - name: Build project
         run: pnpm build
 
+      - name: Verify export output
+        run: |
+          test -f out/index.html
+          touch out/.nojekyll
+
       - name: Deploy to GitHub Pages
         if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
         uses: peaceiris/actions-gh-pages@v3
