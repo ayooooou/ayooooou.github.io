@@ -42,7 +42,7 @@ function formatNumber(num: number): string {
 
 export function PostCard({ post }: PostCardProps) {
   return (
-    <article className="border-b border-border px-3 py-2 md:px-4 md:py-3">
+    <article className="border-b border-border px-3 pt-2 pb-0.5 last:border-b-0 md:px-4 md:pt-3 md:pb-1">
       <div className="flex gap-2 md:gap-3">
         <div className="flex flex-col items-center">
           <Avatar className="h-7 w-7 md:h-9 md:w-9">
@@ -95,52 +95,69 @@ export function PostCard({ post }: PostCardProps) {
             </div>
           )}
 
-          <div className="ml-0 mt-0 flex items-center gap-0.5 md:ml-0 md:mt-0 md:gap-1">
-            <a
-              href="https://discordapp.com/users/444760354908536834"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded-full pl-0 pr-1.5 py-1.5 text-muted-foreground transition-colors duration-300 md:py-2 md:pr-2 hover:text-[#5865F2]"
-            >
+          <div className="ml-0 mt-0 flex items-center gap-0.5 overflow-visible md:ml-0 md:mt-0 md:gap-1">
+            <SocialLink href="https://discordapp.com/users/444760354908536834" hoverClassName="hover:text-[#5865F2]" paddingClassName="pl-0 pr-1.5 py-1.5 md:py-2 md:pr-2" tooltipToIcon username="a.uuu">
               <IconBrandDiscord className="h-5 w-5 md:h-6 md:w-6" />
-            </a>
-            <a
-              href="https://github.com/ayooooou"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded-full p-1.5 text-muted-foreground transition-colors duration-300 md:p-2 hover:text-foreground"
-            >
+            </SocialLink>
+            <SocialLink href="https://github.com/ayooooou" hoverClassName="hover:text-foreground" paddingClassName="p-1.5 md:p-2" username="ayooooou">
               <IconBrandGithub className="h-5 w-5 md:h-6 md:w-6" />
-            </a>
-            <a
-              href="https://instagram.com/a.uuu.0"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded-full p-1.5 transition-colors duration-300 md:p-2 text-muted-foreground hover:text-[#FFB366]"
-            >
+            </SocialLink>
+            <SocialLink href="https://instagram.com/a.uuu.0" hoverClassName="hover:text-[#FFB366]" paddingClassName="p-1.5 md:p-2" username="a.uuu.0">
               <IconBrandInstagram className="h-5 w-5 md:h-6 md:w-6" />
-            </a>
-            <a
-              href="mailto:yoyokuo1129@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded-full p-1.5 text-muted-foreground transition-colors duration-300 md:p-2 hover:text-[#FFD54F]"
-            >
+            </SocialLink>
+            <SocialLink href="mailto:yoyokuo1129@gmail.com" hoverClassName="hover:text-[#FFD54F]" paddingClassName="p-1.5 md:p-2" username="yoyokuo1129@gmail.com">
               <IconMail className="h-5 w-5 md:h-6 md:w-6" />
-            </a>
-            <a
-              href="https://youtube.com/@Y0Y0_au"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded-full p-1.5 text-muted-foreground transition-colors duration-300 md:p-2 hover:text-[#FF4D00B7]"
-            >
+            </SocialLink>
+            <SocialLink href="https://youtube.com/@Y0Y0_au" hoverClassName="hover:text-[#FF4D00B7]" paddingClassName="p-1.5 md:p-2" username="Y0Y0_au">
               <IconBrandYoutube className="h-5 w-5 md:h-6 md:w-6" />
-            </a>
+            </SocialLink>
           </div>
 
 
         </div>
       </div>
     </article>
+  )
+}
+
+function SocialLink({
+  href,
+  hoverClassName,
+  paddingClassName,
+  tooltipToIcon,
+  username,
+  children,
+}: {
+  href: string
+  hoverClassName: string
+  paddingClassName: string
+  tooltipToIcon?: boolean
+  username: string
+  children: React.ReactNode
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${username} ${href}`}
+      className={`group relative flex items-center justify-center rounded-full text-muted-foreground transition-colors duration-300 ${paddingClassName} ${hoverClassName}`}
+    >
+      {tooltipToIcon ? (
+        <span className="relative inline-flex items-center justify-center">
+          {children}
+          <span className="pointer-events-none absolute left-1/2 top-full z-30 mt-0.5 -translate-x-1/2 whitespace-nowrap rounded-md border border-border/70 bg-[#181818]/90 px-1.5 py-0.5 text-[9px] font-medium text-popover-foreground opacity-0 shadow-sm shadow-black/10 backdrop-blur-md transition-all duration-200 ease-out group-hover:opacity-100 group-focus-visible:opacity-100">
+            {username}
+          </span>
+        </span>
+      ) : (
+        <>
+          {children}
+          <span className="pointer-events-none absolute left-1/2 top-full z-30 -mt-1.5 -translate-x-1/2 whitespace-nowrap rounded-md border border-border/70 bg-[#181818]/90 px-1.5 py-0.5 text-[9px] font-medium text-popover-foreground opacity-0 shadow-sm shadow-black/10 backdrop-blur-md transition-all duration-200 ease-out group-hover:opacity-100 group-focus-visible:opacity-100">
+            {username}
+          </span>
+        </>
+      )}
+    </a>
   )
 }

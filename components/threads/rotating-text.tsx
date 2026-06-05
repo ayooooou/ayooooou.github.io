@@ -85,7 +85,7 @@ export function RotatingText({ prefix, suffix, texts, interval = 3800 }: Rotatin
           className="relative inline-flex align-baseline overflow-hidden ml-0.5"
           style={{ height: "1.2em", lineHeight: "1.2em", verticalAlign: "baseline" }}
         >
-          <span className="invisible whitespace-nowrap">
+          <span className="invisible whitespace-nowrap pr-[0.18em]">
             {longestText || texts[index]}
           </span>
           {isAnimating ? (
