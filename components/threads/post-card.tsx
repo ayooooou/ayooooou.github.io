@@ -91,7 +91,7 @@ export function PostCard({ post }: PostCardProps) {
                   </span>
                 </button>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent className="border-border/60 bg-background/80 shadow-black/20 backdrop-blur-md">
                 <DialogHeader>
                   <DialogTitle>How to use this page</DialogTitle>
                   <DialogDescription>

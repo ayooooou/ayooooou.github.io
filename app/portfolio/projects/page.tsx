@@ -9,7 +9,7 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <main className="h-screen overflow-y-auto touch-auto bg-background px-6 py-12 text-foreground md:px-12 md:py-20">
+    <main className="portfolio-page-enter h-screen overflow-y-auto touch-auto bg-background px-6 py-12 text-foreground md:px-12 md:py-20">
       <div className="mx-auto max-w-5xl">
         <Link href="/portfolio" className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground">
           <ArrowLeft className="h-4 w-4" />
@@ -38,11 +38,11 @@ export default function ProjectsPage() {
 
               return (
                 <Link key={file} href={pdfUrl} target="_blank" rel="noopener noreferrer" className="group">
-                  <div className="relative aspect-[3/4] overflow-hidden border border-border bg-muted shadow-sm transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-lg">
+                  <div className="relative aspect-[3/4] min-w-0 overflow-hidden border border-border bg-muted shadow-sm transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-lg">
                     <iframe
                       title={`${title} PDF 預覽`}
                       src={`${pdfUrl}#page=1&toolbar=0&navpanes=0&scrollbar=0`}
-                      className="pointer-events-none h-[calc(100%+2px)] w-[calc(100%+2px)] origin-top-left scale-[1.01] bg-white"
+                      className="pointer-events-none absolute inset-0 h-full w-full border-0 bg-white"
                     />
                     <div className="absolute inset-0 bg-transparent transition-colors group-hover:bg-foreground/5" />
                   </div>

@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ArrowUpRight, FileText, FolderOpen } from "lucide-react"
+import { PortfolioBackLink } from "@/components/portfolio/back-link"
 
 const folders = [
   {
@@ -20,11 +21,9 @@ const folders = [
 
 export default function PortfolioPage() {
   return (
-    <main className="h-screen overflow-y-auto touch-auto bg-background px-6 py-12 text-foreground md:px-12 md:py-20">
+    <main className="portfolio-page-enter h-screen overflow-y-auto touch-auto bg-background px-6 py-12 text-foreground md:px-12 md:py-20">
       <div className="mx-auto max-w-5xl">
-        <Link href="/" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-          ← Back to feed
-        </Link>
+        <PortfolioBackLink />
 
         <header className="mt-12 max-w-2xl">
           <p className="text-sm text-muted-foreground">Portfolio</p>
