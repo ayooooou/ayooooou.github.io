@@ -1,8 +1,17 @@
 "use client"
 
-import { MoreHorizontal, Volume2 } from "lucide-react"
+import { HelpCircle, MoreHorizontal, Volume2 } from "lucide-react"
 import { IconBrandInstagram, IconBrandDiscord, IconBrandGithub, IconMail, IconBrandYoutube } from "@tabler/icons-react"
+import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 import { RotatingText } from "./rotating-text"
 
 interface PostCardProps {
@@ -45,10 +54,19 @@ export function PostCard({ post }: PostCardProps) {
     <article className="border-b border-border px-3 pt-2 pb-0.5 last:border-b-0 md:px-4 md:pt-3 md:pb-1">
       <div className="flex gap-2 md:gap-3">
         <div className="flex flex-col items-center">
-          <Avatar className="h-7 w-7 md:h-9 md:w-9">
-            <AvatarImage src={post.user.avatar || "/placeholder.svg"} alt={post.user.username} loading="eager" />
-            <AvatarFallback></AvatarFallback>
-          </Avatar>
+          <Link
+            href="/portfolio"
+            aria-label="Portfolio"
+            className="group relative rounded-full"
+          >
+            <Avatar className="h-7 w-7 md:h-9 md:w-9">
+              <AvatarImage src={post.user.avatar || "/placeholder.svg"} alt={post.user.username} loading="eager" />
+              <AvatarFallback></AvatarFallback>
+            </Avatar>
+            <span className="pointer-events-none absolute left-1/2 top-full z-30 mt-1.5 -translate-x-1/2 whitespace-nowrap rounded-md border border-border/70 bg-[#181818]/90 px-1.5 py-0.5 text-[9px] font-medium text-popover-foreground opacity-0 shadow-sm shadow-black/10 backdrop-blur-md transition-all duration-200 ease-out group-hover:opacity-100 group-focus-visible:opacity-100">
+              Portfolio
+            </span>
+          </Link>
           <div className="mt-2 flex-1 w-0.5 bg-border" />
         </div>
 
@@ -61,9 +79,32 @@ export function PostCard({ post }: PostCardProps) {
               </svg>
               <span className="text-xs md:text-sm text-muted-foreground">{post.timeAgo}</span>
             </div>
-            <button className="hover:text-foreground transition-colors text-muted-foreground">
-              <MoreHorizontal className="h-4 w-4 md:h-5 md:w-5" />
-            </button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <button
+                  aria-label="Help"
+                  className="group relative text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <MoreHorizontal className="h-4 w-4 md:h-5 md:w-5" />
+                  <span className="pointer-events-none absolute left-1/2 top-full z-30 mt-1.5 -translate-x-1/2 whitespace-nowrap rounded-md border border-border/70 bg-[#181818]/90 px-1.5 py-0.5 text-[9px] font-medium text-popover-foreground opacity-0 shadow-sm shadow-black/10 backdrop-blur-md transition-all duration-200 ease-out group-hover:opacity-100 group-focus-visible:opacity-100">
+                    Help
+                  </span>
+                </button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>How to use this page</DialogTitle>
+                  <DialogDescription>
+                    Use the interactive icons and links to explore more about me.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4 text-sm leading-6 text-muted-foreground">
+                  <p><span className="font-medium text-foreground">Avatar:</span> Click my avatar to open my Portfolio.</p>
+                  <p><span className="font-medium text-foreground">Social icons:</span> Hover over an icon to see its name, then click it to visit that social platform.</p>
+                  <p><span className="font-medium text-foreground">Portfolio files:</span> Open a folder to browse projects, or click a document to view the complete PDF.</p>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
 
           {post.rotatingContent && (
