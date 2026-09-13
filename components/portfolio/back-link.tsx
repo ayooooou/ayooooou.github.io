@@ -2,9 +2,14 @@
 
 import { ArrowLeft } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 
 export function PortfolioBackLink() {
   const router = useRouter()
+
+  useEffect(() => {
+    router.prefetch("/")
+  }, [router])
 
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault()
