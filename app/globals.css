@@ -120,13 +120,13 @@
     @apply border-border outline-ring/50;
   }
   html {
-    font-size: 12px;
+    font-size: 14px;
     overflow: hidden;
     touch-action: none;
   }
-  @media (max-width: 639px) {
+  @media (min-width: 640px) {
     html {
-      font-size: 14px;
+      font-size: 12px;
     }
   }
   body {
