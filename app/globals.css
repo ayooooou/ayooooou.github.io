@@ -124,6 +124,11 @@
     overflow: hidden;
     touch-action: none;
   }
+  @media (max-width: 639px) {
+    html {
+      font-size: 14px;
+    }
+  }
   body {
     @apply bg-background text-foreground;
     line-height: 1.6;
