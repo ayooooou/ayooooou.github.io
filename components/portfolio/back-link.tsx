@@ -19,11 +19,11 @@ export function PortfolioBackLink() {
     }
 
     if (viewTransitionDocument.startViewTransition) {
-      viewTransitionDocument.startViewTransition(() => router.push("/"))
+      viewTransitionDocument.startViewTransition(() => router.back())
       return
     }
 
-    router.push("/")
+    router.back()
   }
 
   return (
