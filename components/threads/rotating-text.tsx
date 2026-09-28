@@ -7,6 +7,7 @@ interface RotatingTextProps {
   suffix?: string
   texts: string[]
   interval?: number
+  animateOnMount?: boolean
 }
 
 function renderBoldSegments(text: string) {
@@ -29,7 +30,7 @@ function renderWithLineBreaks(text?: string) {
   ))
 }
 
-export function RotatingText({ prefix, suffix, texts, interval = 3800 }: RotatingTextProps) {
+export function RotatingText({ prefix, suffix, texts, interval = 3800, animateOnMount = false }: RotatingTextProps) {
   const [index, setIndex] = useState(0)
   const [prevIndex, setPrevIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
@@ -45,6 +46,20 @@ export function RotatingText({ prefix, suffix, texts, interval = 3800 }: Rotatin
     if (texts.length <= 1) {
       return
     }
+
+    if (!animateOnMount) {
+      return
+    }
+
+    const nextIndex = (indexRef.current + 1) % texts.length
+    setPrevIndex(indexRef.current)
+    setIndex(nextIndex)
+    indexRef.current = nextIndex
+    setIsAnimating(true)
+
+    timeoutRef.current = setTimeout(() => {
+      setIsAnimating(false)
+    }, animationDuration)
 
     if (intervalRef.current) {
       clearInterval(intervalRef.current)
@@ -75,7 +90,7 @@ export function RotatingText({ prefix, suffix, texts, interval = 3800 }: Rotatin
         clearTimeout(timeoutRef.current)
       }
     }
-  }, [texts.length, interval])
+  }, [texts.length, interval, animateOnMount])
 
   return (
     <p className="text-sm text-foreground md:text-base leading-normal">

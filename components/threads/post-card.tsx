@@ -15,6 +15,7 @@ import {
 import { RotatingText } from "./rotating-text"
 
 interface PostCardProps {
+  animateOnMount?: boolean
   post: {
     id: string
     user: {
@@ -49,7 +50,7 @@ function formatNumber(num: number): string {
   return num.toString()
 }
 
-export function PostCard({ post }: PostCardProps) {
+export function PostCard({ post, animateOnMount = false }: PostCardProps) {
   return (
     <article className="border-b border-border px-3 pt-2 pb-0.5 last:border-b-0 md:px-4 md:pt-3 md:pb-1">
       <div className="flex gap-2 md:gap-3">
@@ -113,6 +114,7 @@ export function PostCard({ post }: PostCardProps) {
                 prefix={post.rotatingContent.prefix}
                 suffix={post.rotatingContent.suffix}
                 texts={post.rotatingContent.texts}
+                animateOnMount={animateOnMount}
               />
             </div>
           )}

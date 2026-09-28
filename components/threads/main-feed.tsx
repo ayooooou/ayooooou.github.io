@@ -1,5 +1,7 @@
 "use client"
 
+import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import { PostCard } from "./post-card"
 
 // ============================
@@ -35,12 +37,26 @@ const posts = [
 ]
 
 export function MainFeed() {
+  const router = useRouter()
+  const [animateOnMount, setAnimateOnMount] = useState(false)
+
+  useEffect(() => {
+    router.prefetch("/portfolio")
+
+    const shouldAnimate = new URLSearchParams(window.location.search).get("animate") === "1"
+
+    if (shouldAnimate) {
+      setAnimateOnMount(true)
+      window.history.replaceState(window.history.state, "", "/")
+    }
+  }, [router])
+
   return (
     <div className="min-h-screen flex items-center justify-center px-2 sm:px-4">
       <main className="w-full sm:w-[450px] border border-border rounded-2xl overflow-visible bg-[#181818]">
         <div>
           {posts.map((post) => (
-            <PostCard key={post.id} post={post} />
+            <PostCard key={post.id} post={post} animateOnMount={animateOnMount} />
           ))}
         </div>
       </main>
